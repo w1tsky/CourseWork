@@ -1,0 +1,82 @@
+﻿<Page x:Class="CourseWork.Pages.GpuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseWork.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GpuPage">
+
+    <Grid>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+
+
+            <DockPanel Background="Gray" Grid.Row="0" Grid.Column="0" >
+                <StackPanel>
+                    <Button Content="AMD"  />
+                    <Button Content="Nvidia" />
+                </StackPanel>
+            </DockPanel>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <DataGrid Grid.Row="0" Grid.RowSpan="5" x:Name="gpusGrid" CanUserAddRows="False" AutoGenerateColumns="False"
+                  SelectionChanged="CpusGrid_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Company" Binding="{Binding Company}"/>
+                        <DataGridTextColumn Header="Series" Binding="{Binding Series}"/>
+                        <DataGridTextColumn Header="Model" Binding="{Binding Model}"/>
+                        <DataGridTextColumn Header="MemorySize" Binding="{Binding GpuMemory}"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <DockPanel  Grid.Row="5" Grid.RowSpan="2" Background="#373737">
+                    <TextBlock Text="Выбранная модель"  DockPanel.Dock="Top" Style="{StaticResource middleText}"  />
+
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="250"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Видеокарта" Style="{StaticResource smallText}" />
+                        <TextBox Grid.Column="1" Grid.Row="0" x:Name="cpuTextBlock" Width="450" Height="50" />
+
+                        <TextBlock Grid.Column="0" Grid.Row="1" Text="Цена" Style="{StaticResource smallText}" />
+                        <TextBox  Grid.Column="1" Grid.Row="1" x:Name="priceTextBlock" Width="450" Height="50" />
+
+
+                    </Grid>
+                    <StackPanel DockPanel.Dock="Right">
+                        <Button Content="Добавить" Click="Button_Click" />
+                    </StackPanel>
+                </DockPanel>
+            </Grid>
+            
+            <Frame x:Name="frame" Grid.Column="2"/>
+            
+        </Grid>
+    </Grid>
+</Page>
